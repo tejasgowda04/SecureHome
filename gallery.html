@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery - Secure Home Construction & Developers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-hero {
+            background: linear-gradient(135deg, rgba(26, 115, 232, 0.9) 0%, rgba(255, 179, 0, 0.8) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0 80px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .gallery-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .gallery-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .gallery-main {
+            padding: 80px 0;
+        }
+
+        .gallery-categories {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: 12px 24px;
+            border: 2px solid var(--light);
+            background: var(--white);
+            color: var(--dark);
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .full-gallery {
+            margin-top: 30px;
+        }
+
+        .gallery-section {
+            margin-bottom: 60px;
+        }
+
+        .gallery-section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .gallery-section-title h3 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .gallery-section-title h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .full-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .full-gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .full-gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .full-gallery-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .full-gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .full-gallery-item:hover .full-gallery-img img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .full-gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .full-gallery-img {
+                height: 220px;
+            }
+
+            .category-tabs {
+                gap: 10px;
+            }
+
+            .category-tab {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-hero {
+                padding: 140px 0 60px;
+            }
+
+            .gallery-hero h1 {
+                font-size: 2rem;
+            }
+
+            .full-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-tab {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-section">
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Secure Home Construction & Developers" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-main">Secure Home</span>
+                        <span class="logo-sub">Construction & Developers</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="tel:+918970022110" class="header-phone">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="phone-text">+91 89700 22110</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-header">
+                <div class="logo-section">
+                    <a href="index.html" class="logo">
+                        <img src="logo.jpg" alt="Secure Home Construction & Developers" class="logo-img">
+                        <div class="logo-text">
+                            <span class="logo-main">Secure Home</span>
+                            <span class="logo-sub">Construction & Developers</span>
+                        </div>
+                    </a>
+                </div>
+                <button class="mobile-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="gallery.html" class="mobile-nav-link active">Gallery</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Gallery Hero Section -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>Project Gallery</h1>
+            <p>Explore our complete portfolio of stunning interior designs and beautifully constructed homes</p>
+        </div>
+    </section>
+
+    <!-- Main Gallery Content -->
+    <section class="gallery-main">
+        <div class="container">
+            <!-- Filter Buttons -->
+            <div class="gallery-categories">
+                <div class="category-tabs">
+                    <button class="category-tab active" data-category="all">All Projects</button>
+                    <button class="category-tab" data-category="interior">Interior Designs</button>
+                    <button class="category-tab" data-category="exterior">Complete Homes</button>
+                </div>
+            </div>
+
+            <div class="full-gallery">
+                <!-- Complete Homes Section -->
+                <div class="gallery-section" data-category="exterior">
+                    <div class="gallery-section-title">
+                        <h3>Complete Homes</h3>
+                    </div>
+                    <div class="full-gallery-grid">
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h1.jpg" alt="Modern Villa">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h2.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h3.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h4.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h5.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h6.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h7.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h8.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h9.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h10.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h11.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h12.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h13.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h14.jpg" alt="Contemporary Home">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="h15.jpg" alt="Luxury Bungalow">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interior Designs Section -->
+                <div class="gallery-section" data-category="interior">
+                    <div class="gallery-section-title">
+                        <h3>Interior Designs</h3>
+                    </div>
+                    <div class="full-gallery-grid">
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="int1.jpg" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="in2.jpg" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="Screenshot 2025-11-10 190441.png" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="Screenshot 2025-11-10 190624.png" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="Screenshot 2025-11-10 190457.png" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="in6.jpg" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="in7.jpg" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="in8.jpg" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="Screenshot 2025-11-10 190511.png" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="Screenshot 2025-11-10 190537.png" alt="Luxury Living Room">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="Screenshot 2025-11-10 190559.png" alt="Modern Kitchen">
+                            </div>
+                        </div>
+                        <div class="full-gallery-item">
+                            <div class="full-gallery-img">
+                                <img src="Screenshot 2025-11-10 190613.png" alt="Elegant Bedroom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Secure Home Construction</h3>
+                    <p>Building your dream home with trust, quality, and precision. We specialize in house construction, interiors, renovation, and project development.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">House Construction</a></li>
+                        <li><a href="#">Interior Design</a></li>
+                        <li><a href="#">Renovation</a></li>
+                        <li><a href="#">Architecture Plans</a></li>
+                        <li><a href="#">Material Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Shyadanahalli Village, Pandavapura</li>
+                        <li><i class="fas fa-phone-alt"></i> +91 89700 22110</li>
+                        <li><i class="fas fa-envelope"></i> darshan.ramu.gowda@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Secure Home Construction & Developers. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/918970022110" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Gallery filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            const gallerySections = document.querySelectorAll('.gallery-section');
+
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    const category = tab.getAttribute('data-category');
+                    
+                    // Filter gallery sections
+                    gallerySections.forEach(section => {
+                        if (category === 'all' || section.getAttribute('data-category') === category) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
