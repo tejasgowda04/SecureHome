@@ -25,7 +25,6 @@
                 <ul>
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -63,7 +62,6 @@
             <ul class="mobile-nav-links">
                 <li><a href="#home" class="mobile-nav-link active">Home</a></li>
                 <li><a href="#about" class="mobile-nav-link">About</a></li>
-                <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
                 <li><a href="#services" class="mobile-nav-link">Services</a></li>
                 <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
                 <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
@@ -180,7 +178,7 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+        <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
             <div class="section-title">
@@ -188,8 +186,10 @@
                 <p>Explore our portfolio of completed and ongoing construction projects.</p>
             </div>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img"></div>
+                <div class="project-card" data-project="project1">
+                    <div class="project-img">
+                        <img src="h1.jpg" alt="Modern Villa Residence">
+                    </div>
                     <div class="project-info">
                         <h3>Modern Villa Residence</h3>
                         <p>A luxurious 4-bedroom villa with contemporary design and premium finishes.</p>
@@ -197,10 +197,13 @@
                             <span><i class="fas fa-map-marker-alt"></i> Mandya</span>
                             <span><i class="fas fa-expand-arrows-alt"></i> 40×60</span>
                         </div>
+                        <button class="btn-view-more">View More Photos</button>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-img"></div>
+                <div class="project-card" data-project="project2">
+                    <div class="project-img">
+                        <img src="h2.jpg" alt="Urban Family Home">
+                    </div>
                     <div class="project-info">
                         <h3>Urban Family Home</h3>
                         <p>Spacious family home with modern amenities and elegant interior design.</p>
@@ -208,17 +211,21 @@
                             <span><i class="fas fa-map-marker-alt"></i> Pandavapura</span>
                             <span><i class="fas fa-expand-arrows-alt"></i> 30×40</span>
                         </div>
+                        <button class="btn-view-more">View More Photos</button>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-img"></div>
+                <div class="project-card" data-project="project3">
+                    <div class="project-img">
+                        <img src="h3.jpg" alt="Luxury Duplex">
+                    </div>
                     <div class="project-info">
                         <h3>Luxury Duplex</h3>
                         <p>Two-story luxury duplex with premium fixtures and custom-designed spaces.</p>
                         <div class="project-meta">
-                            <span><i class="fas fa-map-marker-alt"></i> Mysore</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Shyadanahalli</span>
                             <span><i class="fas fa-expand-arrows-alt"></i> 50×80</span>
                         </div>
+                        <button class="btn-view-more">View More Photos</button>
                     </div>
                 </div>
             </div>
@@ -399,7 +406,7 @@
                         <p>"The team delivered our project on time and within budget. Darshan's engineering expertise ensured every aspect was perfect. Highly recommended for quality construction!"</p>
                     </div>
                     <div class="testimonial-author">
-                        <h4>Priya Shankar</h4>
+                        <h4>Priya Sharma</h4>
                         <p>Pandavapura</p>
                     </div>
                 </div>
@@ -408,7 +415,7 @@
                         <p>"From design to completion, the process was smooth and transparent. The interior design team transformed our space beyond imagination. Truly professional service!"</p>
                     </div>
                     <div class="testimonial-author">
-                        <h4>Anil Kumar</h4>
+                        <h4>Anil Reddy</h4>
                         <p>Shyadanahalli</p>
                     </div>
                 </div>
@@ -417,7 +424,7 @@
                         <p>"We renovated our old house with Secure Home and the results are amazing. They preserved the traditional elements while adding modern amenities. Excellent workmanship!"</p>
                     </div>
                     <div class="testimonial-author">
-                        <h4>Shashi Gowda</h4>
+                        <h4>Meera Patel</h4>
                         <p>Mandya</p>
                     </div>
                 </div>
@@ -550,9 +557,38 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+        <!-- Project Popup -->
+    <div class="project-popup" id="projectPopup">
+        <div class="popup-overlay"></div>
+        <div class="popup-content">
+            <button class="popup-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-header">
+                <h3 id="popupTitle">Project Title</h3>
+                <div class="popup-nav">
+                    <button class="nav-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span class="image-counter">
+                        <span id="currentImage">1</span> / <span id="totalImages">5</span>
+                    </span>
+                    <button class="nav-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img id="popupImage" src="" alt="">
+                </div>
+                <div class="popup-thumbnails">
+                    <!-- Thumbnails will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
